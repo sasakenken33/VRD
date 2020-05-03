@@ -1,0 +1,56 @@
+doctype html
+html
+  head
+    title
+      | Venect Research Database
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  body
+    .app-title.navbar.navbar-expand-md.navbar-dark.bg-dark
+      strong.navbar-brand href="/" VRD
+      ul.navbar-nav.ml-auto
+        -if current_user #もしログインしているなら（session[:user_id]がnilじゃなければ、下記のメニューを表示する）
+          li.nav-item= link_to "ソース一覧", sources_path, class: "nav-link"
+          li.nav-item= link_to "ソース登録", new_source_path, class: "nav-link"
+          li.nav-item= link_to "ログアウト", logout_path, method: :delete, class: "nav-link"
+          - if current_user.admin?
+            li.nav-item= link_to "アカウント一覧", admin_users_path, class: "nav-link"
+            li.nav-item= link_to "アカウント登録", new_admin_user_path, class: "nav-link"
+        - else #ログインしてないなら
+          li.nav-item= link_to "ログイン", login_path, class: "nav-link"
+    .jumbotron.jumbotron-black 
+        div.col-12.text-center
+            = image_tag "/assets/VRD.png", class:"w-25"
+            .strong.text-white VRDはリサーチソースを一括管理・検索できるデータベースです
+            = link_to  "ソース一覧へ", sources_path, class: "sbmbtn", id: "test" 
+    .container
+      section
+        .row
+          .col-md-2
+            h2 News
+          .col-md-10
+            dl.row
+              dt.col-md-3 
+              dd.col-md-9  
+              dt.col-md-3 2020/03/22
+              dd.col-md-9 タグ機能を追加しました！各ソースにタグを付けて管理することができます！
+              dt.col-md-3 
+              dd.col-md-9
+              dt.col-md-3 2020/03/22
+              dd.col-md-9 アカウント管理機能を追加しました！管理者ユーザーのみ「編集」「削除」が可能です！
+              dt.col-md-3 
+              dd.col-md-9
+              dt.col-md-3 2020/02/22
+              dd.col-md-9 編集機能を追加しました！
+              dt.col-md-3 
+              dd.col-md-9
+              dt.col-md-3 2020/02/22
+              dd.col-md-9 削除機能を追加しました！
+              dt.col-md-3 
+              dd.col-md-9
+    footer.py-1.bg-dark.text-light.fixed-bottom
+      .container.text-center
+        ul.nav.justify-content-center.mb-3
+        p.small Copyright &copy;2020 Venect Research Database, All Rights Reserved.

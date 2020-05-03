@@ -1,0 +1,27 @@
+h2.mt-3.text-center ユーザー詳細
+
+ul.nav.justify-content-end
+    li.nav-item= link_to "", admin_users_path, class: "fas fa-undo-alt mr-3 text-secondary"
+    li.nav-item= link_to "", edit_admin_user_path, class: "fas fa-pen mr-3 text-secondary"
+    li.nav-item= link_to "", [:admin, @user], method: :delete, data: { confirm: "ユーザー「#{@user.name}」を削除します。よろしいですか？ "}, class: "fas fa-trash text-secondary"
+
+table.table.table-hover
+    tbody
+        tr
+            th.text-white.bg-dark.text-center ユーザーID
+            td.text-center= @user.id
+        tr
+            th.text-white.bg-dark.text-center ユーザー名
+            td.text-center= @user.name
+        tr
+            th.text-white.bg-dark.text-center メールアドレス
+            td.text-center= @user.email
+        tr
+            th.text-white.bg-dark.text-center 管理者権限
+            td.text-center= @user.admin? ? "あり" : "なし"
+        tr
+            th.text-white.bg-dark.text-center 作成日時
+            td.text-center= @user.created_at
+        tr
+            th.text-white.bg-dark.text-center 更新日時
+            td.text-center= @user.updated_at

@@ -1,0 +1,5 @@
+h2.mt-3.text-center ソースの編集
+-if @source.errors.present?
+    ul#error_explanation.alert.alert-danger ソース名・ソースURLを空欄にすることはできません
+
+= render partial: "form", locals: { source: @source} 

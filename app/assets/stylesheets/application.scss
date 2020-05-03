@@ -1,0 +1,61 @@
+@import "bootstrap";
+
+.jumbotron-black {
+    @extend .jumbotron-fluid !optional;
+    background-color: black;    /* GRAPEFRUIT */
+    line-height: 3rem;
+    strong{
+        color: white;
+    }
+    p {
+      color: white;
+    }
+    h2 {
+      color: #F5F7FA;   /* LIGHT GRAY */
+    }
+}
+.btn {
+    //ボタンの丸み（数字が大きいほど丸みを帯びる）
+    border-radius: 3px;
+    font-size: small;
+}
+.btn-small {
+    border-radius: 1px;
+}
+.btn-large {
+    border-radius: 3px;
+}
+body {
+    font-family: "M PLUS Rounded 1c",sans-serif;
+    background-color: #f0f0f0;
+}
+.bg-dark{
+    background-color: black;
+}
+.bg-light{
+  background-color: #f0f0f0;
+}
+th{
+  font-size: small;
+}
+td{
+  font-size: small;
+}
+.parentbtn {
+  text-align: center; 
+}
+.sbmbtn {
+	width: 100px;
+	padding: 0.5em;
+	text-align: center;
+	text-decoration: none;
+	color: #1B1B1B;
+	background: #fff;
+	border:1px solid #1B1B1B;
+}
+.sbmbtn:hover {
+	 background: #1B1B1B;
+   color: #fff;
+	 cursor: pointer;
+	 text-decoration: none;
+}

@@ -1,0 +1,24 @@
+h2.mt-3.text-center 検索結果
+p.text-success.text-center データベースに登録されているソース一覧が表示されています
+ul.nav.justify-content-end
+    li.nav-item= link_to "", sources_path, class: "fas fa-undo-alt mr-3 text-secondary"
+
+table.table.table-hover.table-sm
+    thead.thead-dark
+        tr
+            th= "ソース名"
+            th= "ソースURL"
+            th= "クライアントタグ"
+            th= "カテゴリタグ"
+            th
+    tbody
+        - @sources.each do |source|
+            tr
+                td= link_to source.name, source_path(source)
+                td= auto_link(simple_format(h(source.url), {}, sanitize: false, wrapper_tag: "div"))
+                td= render "sources/client_list", tag_list: source.client_list 
+                td= render "sources/category_list", tag_list: source.category_list 
+                td
+                    = link_to "", edit_source_path(source), class: "fas fa-pen mr-3 text-secondary"
+                    = link_to "", source, method: :delete, remote: true, data:{ confirm: "ソース「#{source.name}」を削除します。よろしいですか？"}, class: "fas fa-trash text-secondary"
+

@@ -1,0 +1,23 @@
+h2.mt-3.text-center ソース詳細
+
+ul.nav.justify-content-end
+    li.nav-item= link_to "", sources_path, class: "fas fa-undo-alt mr-3 text-secondary"
+    li.nav-item= link_to "", edit_source_path, class: "fas fa-pen mr-3 text-secondary"
+    li.nav-item= link_to "", @source, method: :delete, data:{ confirm: "ソース「#{@source.name}」を削除します。よろしいですか？"}, class: "fas fa-trash text-secondary"
+table.table.table-hover
+    tbody
+        tr
+            th.text-white.bg-dark.text-center= "ソースID"
+            td.text-center= @source.id
+        tr
+            th.text-white.bg-dark.text-center= "ソースURL"
+            td.text-center= auto_link(simple_format(h(@source.url), {}, sanitize: false, wrapper_tag: "div"))
+        tr
+            th.text-white.bg-dark.text-center= "ソース詳細"
+            td.text-center= simple_format(h(@source.description), {}, sanitize: false, wrapper_tag: "div")
+        tr
+            th.text-white.bg-dark.text-center= "登録日時"
+            td.text-center= @source.created_at
+        tr
+            th.text-white.bg-dark.text-center= "更新日時"
+            td.text-center= @source.created_at

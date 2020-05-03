@@ -1,0 +1,6 @@
+h2.mt-3 ユーザーの編集
+
+.nav.justify-content-end
+    =link_to "", admin_users_path, class: "fas fa-undo-alt text-secondary"
+
+= render partial: "form", locals: { user: @user }
